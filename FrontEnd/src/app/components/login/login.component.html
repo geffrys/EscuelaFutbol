@@ -1,0 +1,15 @@
+<div>
+    <h2>Iniciar sesión</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div>
+        <label for="username">Nombre de usuario:</label>
+        <input type="text" id="username" [(ngModel)]="username" name="username" required>
+      </div>
+      <div>
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" [(ngModel)]="password" name="password" required>
+      </div>
+      <button type="submit">Iniciar sesión</button>
+      <button (click)="signInWithGoogle()">Iniciar sesión con Google</button>
+    </form>
+  </div>

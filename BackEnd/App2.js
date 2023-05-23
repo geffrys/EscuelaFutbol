@@ -1,25 +1,34 @@
 import express from "express"
 import passport from "passport"
 import { loginRouter } from "./routes/login.js"
-import { getUsuarioByEmail } from "./controller/Usuario.js"
+import "./middlewares/google.js"
+import cors from "cors"
+
+
+
 
 const app = express()
 
 // middlewares
 app.use(express.json())
 app.use(passport.initialize())
-app.use(express.json())
+app.use(cors())
 
 // Routes
 
-app.use("/auth", loginRouter)
+app.use("/auth", passport.authenticate('auth-google',{
+    scope: [
+        'https://www.googleapis.com/auth/userinfo.email',
+        'https://www.googleapis.com/auth/userinfo.profile'
+    ],
+    session: false,
+    failureRedirect: '/auth/google'
+}), loginRouter)
 
-// const ensayo = await getUsuarioByEmail("g")
-//     .then(res=>res)
-//     .catch(err=>{throw err})
 
-// console.log(ensayo.length);
+app.get("/", (req,res)=>{
+    res.send('hello')
+})
 
 app.listen(3000, ()=>{
-    console.log('escuchando en el puerto 3000');
 })

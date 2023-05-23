@@ -1,4 +1,3 @@
-import Usuario from "../models/Usuario.js";
 import { connection } from "../dataAccess/MySql.js";
 import util from "util"
 
@@ -14,4 +13,10 @@ const getUsuarioByEmail = async (email) => {
   );
 }; 
 
-export{ getUsuarioByEmail };
+const createUser = async (user) => {
+  await query(
+    `INSERT INTO usuarios(nombre, email, google_id, access_token, id_tipousuario) VALUES ("${user.nombre}","${user.email}","${user.google_id}","${user.access_token}",${user.id_tipousuario})`
+  )
+}
+
+export{ getUsuarioByEmail, createUser };
