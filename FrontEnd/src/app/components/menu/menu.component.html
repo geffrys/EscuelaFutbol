@@ -1,0 +1,30 @@
+<nav class="navbar-menu-Cnt">
+
+    <div class="navbar-menu_iconCnt">
+        <a href="" class="navbar-menu_linkIcon">
+            <img src="https://www.politecnicojic.edu.co/images/logo/logo.png" alt="" class="navbar-menu_iconImg">
+        </a>            
+    </div>
+    
+    <div class="navbar-menu_itemsCnt" *ngIf="this.loggedService.getIsLogged()">
+        <div  class="navbar-menu_listCnt">
+            <ol class="navbar-menu_list">
+                <a (click)="hrefChange('inicio')"  class="navbar-menu_LinkListItem">
+                    <li class="navbar-menu_Listitem">Inicio</li>
+                </a>
+                <a (click)="hrefChange('nosotros')"  class="navbar-menu_LinkListItem">
+                    <li class="navbar-menu_Listitem">Nosotros</li>
+                </a>
+                <a (click)="hrefChange('nosotros')"  class="navbar-menu_LinkListItem">
+                    <li class="navbar-menu_Listitem">Nosotros</li>
+                </a>
+                <a (click)="hrefChange('nosotros')"  class="navbar-menu_LinkListItem">
+                    <li class="navbar-menu_Listitem">Nosotros</li>
+                </a>
+            </ol>
+        </div>
+        <div class="navbar-menu_UserInfo">
+            <span (click)="logOut()" class="navbar-menu_logOut">Cerrar sesion</span>
+        </div>
+    </div>
+</nav>

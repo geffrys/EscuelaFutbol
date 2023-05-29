@@ -28,3 +28,23 @@ h2 {
   button:hover {
     background-color: #23527c;
   }
+
+  .userInputsCnt input{
+    width: 100%;
+  }
+
+  /*CONTENEDORES*/
+  .loginCnt{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .loginFormContainer{
+    padding: 20px;
+    margin-top: 20px ;
+    border-radius: 10px;
+    background-color: #2a4723;
+    border: .5px solid black;
+    width: 500px;
+  }

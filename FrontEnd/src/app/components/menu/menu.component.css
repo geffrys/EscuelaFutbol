@@ -1,0 +1,44 @@
+nav{
+    background-color: #2a4723;
+    width: 100%;
+}
+
+.navbar-menu_itemsCnt{
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+    background-color: white;
+}
+
+.navbar-menu_iconCnt 
+.navbar-menu_iconImg{
+    width: 300px;
+    padding: 10px;
+    object-fit: cover;
+}
+
+.navbar-menu_listCnt{
+    width: 70%;
+    margin: 0px 0px 10px 10px;
+}
+
+/*LIST ITEMS*/
+.navbar-menu_list{
+    display: flex;
+    justify-content: space-around;
+}
+.navbar-menu_LinkListItem{
+    text-decoration: none;
+}
+.navbar-menu_Listitem{
+    list-style: none;
+    color: #2a4723;
+}
+.navbar-menu_Listitem:hover{
+    cursor: pointer;
+}
+
+.navbar-menu_logOut:hover{
+    cursor: pointer;
+
+}
