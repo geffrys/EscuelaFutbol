@@ -1,5 +1,6 @@
 import { Component,  OnInit , Input, Output, EventEmitter} from '@angular/core';
 import { LoggedServiceService } from 'src/app/services/Logged/logged-service.service';
+import { TokenService } from 'src/app/services/Token/token.service';
 
 
 @Component({
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   password: string = '';
   token: string = '';
 
-  constructor(protected loggedService: LoggedServiceService) {}
+  constructor(protected loggedService: LoggedServiceService, protected tokenService: TokenService) {}
 
   onSubmit() {
     // Lógica para enviar el formulario
@@ -29,11 +30,13 @@ export class LoginComponent implements OnInit {
       console.log('Token recibido:', token);
       window.localStorage.setItem('jwt', token);
       window.location.href='/';  
+      this.tokenService.setToken(token)
       this.loggedService.setIsLogged(true); 
     } 
     let tokenInterno = window.localStorage.getItem('jwt')
     if(tokenInterno){
       console.log('existe el token en memoria',tokenInterno);
+      this.tokenService.setToken(tokenInterno)
       this.loggedService.setIsLogged(true)
     }
     else {

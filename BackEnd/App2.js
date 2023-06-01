@@ -16,6 +16,7 @@ app.use(cors())
 
 // Routes
 
+// aqui llamamos el middleware de google.js a traves de este passport
 app.use("/auth", passport.authenticate('auth-google',{
     scope: [
         'https://www.googleapis.com/auth/userinfo.email',

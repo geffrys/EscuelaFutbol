@@ -1,5 +1,6 @@
 import { Component , Input} from '@angular/core';
 import { LoggedServiceService } from 'src/app/services/Logged/logged-service.service';
+import { TokenService } from 'src/app/services/Token/token.service';
 
 @Component({
   selector: 'app-menu',
@@ -8,11 +9,12 @@ import { LoggedServiceService } from 'src/app/services/Logged/logged-service.ser
 })
 export class MenuComponent {
 
-  constructor(protected loggedService: LoggedServiceService){}
+  constructor(protected loggedService: LoggedServiceService, protected tokenService: TokenService){}
 
   logOut () {
     window.localStorage.removeItem('jwt');
-    this.loggedService.setIsLogged(false)
+    this.loggedService.setIsLogged(false);
+    this.tokenService.setToken('');
     console.log('token borrado');
   }
 
