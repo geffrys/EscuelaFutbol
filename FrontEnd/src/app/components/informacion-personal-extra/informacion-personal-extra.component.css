@@ -1,0 +1,35 @@
+/* Contenedor de los inputss */
+
+.inputInformacionPersonalCnt{
+    width: 300px;
+    margin-top: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.inputInformacionPersonalCnt input{
+    border: .5px solid rgba(128, 128, 128, 0.568);
+    padding: 10px;
+    text-align: center;
+    width: 350px;
+    margin: 20px 30px;
+    font-size: 20px;
+}
+
+.inputInformacionPersonalCnt input:active{
+    border: .5px solid rgb(128, 128, 128);
+    padding: 10px;
+    text-align: center;
+    width: 350px;
+    margin: 0px 30px;
+    font-size: 20px;
+}
+
+/* Contenedor global */
+
+.informacionPersonalExtraCnt{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: space-around;
+}

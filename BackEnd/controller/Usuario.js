@@ -14,9 +14,27 @@ const getUsuarioByEmail = async (email) => {
 }; 
 
 const createUser = async (user) => {
-  await query(
-    `INSERT INTO usuarios(nombre, email, google_id, access_token, id_tipousuario) VALUES ("${user.nombre}","${user.email}","${user.google_id}","${user.access_token}",${user.id_tipousuario})`
-  )
+  try{
+    await query(
+      `INSERT INTO usuarios(nombre, email, google_id, access_token) VALUES ("${user.nombre}","${user.email}","${user.google_id}","${user.access_token}");`
+    )
+  }catch(err){
+    response = err
+  }
+  
 }
 
-export{ getUsuarioByEmail, createUser };
+const createUserExtend = async (req,res) => {
+  const {id, nacimiento, genero, tiposangre, contacto, tipousuario} = req.body
+  let response
+  try{
+    response = await query(
+    `INSERT INTO usuariosextended(id_usuario, fecha_nacimiento, id_genero, id_tiposangre, tel_contacto, id_tipousuario) VALUES (${id},'${nacimiento}',${genero},${tiposangre},${contacto}, ${tipousuario})`
+  );
+  }catch(err){
+    response = err
+  }
+  res.json(response)
+}
+
+export{ getUsuarioByEmail, createUser, createUserExtend};

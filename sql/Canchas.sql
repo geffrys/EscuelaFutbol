@@ -1,0 +1,8 @@
+CREATE TABLE canchas (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(50) NOT NULL,
+  horario VARCHAR(100) NOT NULL,
+  foto VARCHAR(100) NOT NULL,
+  tipo_cancha VARCHAR(50) NOT NULL,
+  direccion VARCHAR(200) NOT NULL
+);

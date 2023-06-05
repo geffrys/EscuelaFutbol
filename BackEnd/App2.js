@@ -3,6 +3,7 @@ import passport from "passport"
 import { loginRouter } from "./routes/login.js"
 import "./middlewares/google.js"
 import cors from "cors"
+import { registro } from "./routes/userRegistration.js"
 
 
 
@@ -16,6 +17,8 @@ app.use(cors())
 
 // Routes
 
+app.use('/register', registro)
+
 // aqui llamamos el middleware de google.js a traves de este passport
 app.use("/auth", passport.authenticate('auth-google',{
     scope: [
@@ -25,11 +28,6 @@ app.use("/auth", passport.authenticate('auth-google',{
     session: false,
     failureRedirect: '/auth/google'
 }), loginRouter)
-
-
-app.get("/", (req,res)=>{
-    res.send('hello')
-})
 
 app.listen(3000, ()=>{
 })

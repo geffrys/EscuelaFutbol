@@ -1,0 +1,51 @@
+<body>
+  <h1>Formulario</h1>
+  <form action="procesar.php" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required>
+    </div>
+    <div class="form-group">
+      <label for="horario">Horario:</label>
+      <input type="text" id="horario" name="horario" required>
+    </div>
+    <div class="form-group file-upload">
+      <label for="foto">Foto:</label>
+      <input type="file" id="foto" name="foto" accept="image/*" required>
+      <span>(Solo se permiten archivos de imagen)</span>
+      <img id="preview" src="#" alt="Vista previa de la foto" style="display: none;">
+    </div>
+    <div class="form-group">
+      <label for="tipo_cancha">Tipo de Cancha:</label>
+      <select id="tipo_cancha" name="tipo_cancha" required>
+        <option value="">Seleccionar</option>
+        <option value="futbol">Fútbol</option>
+        <option value="baloncesto">Baloncesto</option>
+        <option value="microfutbol">Microfutbol</option>
+        <option value="futbol de sala">Tenis</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="direccion">Dirección:</label>
+      <textarea id="direccion" name="direccion" required></textarea>
+    </div>
+    <input type="submit" value="Enviar" class="submit-button">
+  </form>
+
+  <script>
+    // Vista previa de la imagen seleccionada
+    var fotoInput = document.getElementById('foto');
+    var fotoPreview = document.getElementById('preview');
+
+    fotoInput.addEventListener('change', function(event) {
+      var reader = new FileReader();
+
+      reader.onload = function() {
+        fotoPreview.style.display = 'block';
+        fotoPreview.setAttribute('src', reader.result);
+      }
+
+      reader.readAsDataURL(event.target.files[0]);
+    });
+  </script>
+</body>

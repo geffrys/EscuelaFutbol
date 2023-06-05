@@ -12,5 +12,6 @@ dotenv.config();
 const tokenRouter = Router();
 
 tokenRouter.post('/', (req,res)=>{
-    
+    let body = req.body
+        
 })
