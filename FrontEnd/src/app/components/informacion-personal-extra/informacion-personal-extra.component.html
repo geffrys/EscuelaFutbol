@@ -1,11 +1,15 @@
-
 <div class="informacionPersonalExtraCnt">
 
-    <form action="" (ngSubmit)="onSubmit()">
-        
+    <div class="InformacionPersonalTitle">
+        <h2>Completa tu registro</h2>
+        <p>Necesitamos esta informacion para completar tu perfil</p>
+    </div>
+
+    <form action="">
+
         <table>
             <tbody>
-                <tr  class="rowFormGroupInformacionPersonal">
+                <tr class="rowFormGroupInformacionPersonal">
                     <td class="inputInformacionPersonalCnt">
                         <input type="text" placeholder="Documento" [(ngModel)]="documento">
                     </td>
@@ -25,20 +29,43 @@
                         <input type="date" placeholder="Fecha de nacimiento" [(ngModel)]="nacimiento">
                     </td>
                     <td class="inputInformacionPersonalCnt">
-                        <input type="text" placeholder="Sexo" [(ngModel)]="sexo">
+                        <select name="" id="" [(ngModel)]="sexo">
+                            <option [value]="" selected disabled>Selecciona tu sexo</option>
+                            <option [value]="1" >Masculino</option>
+                            <option [value]="2" >Femenino</option>
+                        </select>
                     </td>
                 </tr>
 
                 <tr class="rowFormGroupInformacionPersonal">
                     <td class="inputInformacionPersonalCnt">
-                        <input type="text" placeholder="EPS" [(ngModel)]="eps">
+                        <select name="" id="" [(ngModel)]="eps">
+                            <option [value]="" selected disabled>Selecciona tu eps</option>
+                            <option [value]="1" >SaludTotal</option>
+                            <option [value]="2" >Sura</option>
+                        </select>
                     </td>
                     <td class="inputInformacionPersonalCnt">
-                        <input type="text" placeholder="RH" [(ngModel)]="rh">
+                        <select name="" id="" [(ngModel)]="rh">
+                            <option [value]="" selected disabled>Selecciona tu rh</option>
+                            <option [value]="1" >A-</option>
+                            <option [value]="2" >A+</option>
+                            <option [value]="3" >AB-</option>
+                            <option [value]="4" >AB+</option>
+                            <option [value]="5" >O-</option>
+                            <option [value]="6" >O+</option>
+                        </select>
                     </td>
                     <td class="inputInformacionPersonalCnt">
                         <input type="text" placeholder="Tel Contacto" [(ngModel)]="contacto">
                     </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button (click)="registrar()">Registrar</button>
+                    </td>
+                    <td></td>
                 </tr>
             </tbody>
         </table>

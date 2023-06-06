@@ -6,6 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .dashboard-items_table{
@@ -15,17 +16,36 @@
 
 /* referente a los iconos */
 .itemIconCnt img{
+    width: 350px;
+    height: 350px;
     object-fit: cover;
-    width: 100px;
 }
 
 
 /* referente a las cards */
 
+.dashboard-itemsCnt{
+    display: flex;
+    justify-content: space-around;
+}
 
-.dashboard-item{
-    border: .5px solid black;
+.dashboard-items{
     padding: 20px;  
     margin: 10px;
+    box-sizing: border-box;
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
 }
+
+.dashboard-items:hover{
+    cursor: pointer; 
+    border: .1px black solid;   
+    border-radius: 5px;
+}
+
+
+
 

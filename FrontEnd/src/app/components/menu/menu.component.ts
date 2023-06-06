@@ -1,4 +1,5 @@
-import { Component , Input} from '@angular/core';
+import { Component , Input, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 import { LoggedServiceService } from 'src/app/services/Logged/logged-service.service';
 import { TokenService } from 'src/app/services/Token/token.service';
 
@@ -7,15 +8,26 @@ import { TokenService } from 'src/app/services/Token/token.service';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
-export class MenuComponent {
+export class MenuComponent implements OnInit{
 
-  constructor(protected loggedService: LoggedServiceService, protected tokenService: TokenService){}
+  protected isLogged: boolean = false
+
+  constructor(protected loggedService: LoggedServiceService, protected tokenService: TokenService, private router: Router){}
+  ngOnInit(): void {
+    if(window.localStorage.getItem('email')!=null){
+      this.isLogged=true;
+    }
+  }
 
   logOut () {
     window.localStorage.removeItem('jwt');
+    window.localStorage.removeItem('email')
+    window.localStorage.removeItem('id')
     this.loggedService.setIsLogged(false);
     this.tokenService.setToken('');
+    this.isLogged = false
     console.log('token borrado');
+    this.router.navigate(['/'])
   }
 
   hrefChange (href: string){

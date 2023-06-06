@@ -1,29 +1,38 @@
 <div class="dashboardCnt">
-    <div class="dashboard-items">
-        <a (click)="hrefChange('/')" class="itemCardCnt">
-            <div class="itemIconCnt">
-                <img src="https://www.politecnicojic.edu.co/images/logo/logo.png" class="itemCardIcon" alt="">
-            </div>
-            <h2 class="cardLabel">Lorem, ipsum.</h2>
-            <h4 class="cardDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, ullam!</h4>
-        </a>
+    <div class="imgppalcontainer">
+        <img src="../../../assets/imagen chicas.png" alt="">
     </div>
-    <div class="dashboard-items">
-        <a (click)="hrefChange('/')" class="itemCardCnt">
-            <div class="itemIconCnt">
-                <img src="https://www.politecnicojic.edu.co/images/logo/logo.png" class="itemCardIcon" alt="">
-            </div>
-            <h2 class="cardLabel">Lorem, ipsum.</h2>
-            <h4 class="cardDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, ullam!</h4>
-        </a>
+
+
+    <div class="dashboard-itemsCnt">
+
+        <div class="dashboard-items" >
+            <a (click)="navigateTo('/login')" class="itemCardCnt">
+                <div class="itemIconCnt">
+                    <img src="../../../assets/ingreso.png" class="itemCardIcon" alt="">
+                </div>
+                <h2 class="cardLabel">INICIAR SESION</h2>
+                <h4 class="cardDescription">Ingresa a la escuela de futbol</h4>
+            </a>
+        </div>
+        <div class="dashboard-items">
+            <a class="itemCardCnt" (click)="navigateTo('/pagos')">
+                <div class="itemIconCnt">
+                    <img src="../../../assets/PAGOS.png" class="itemCardIcon" alt="">
+                </div>
+                <h2 class="cardLabel">PERFIL</h2>
+                <h4 class="cardDescription">Se ofrecen diferentes opciones para tus pagos</h4>
+            </a>
+        </div>
+        <div class="dashboard-items">
+            <a  class="itemCardCnt" (click)="navigateTo('/sedes')">
+                <div class="itemIconCnt">
+                    <img src="../../../assets/sedes.png" class="itemCardIcon" alt="">
+                </div>
+                <h2 class="cardLabel">SEDES</h2>
+                <h4 class="cardDescription">Da un vistazo a nuestras diferentes sedes</h4>
+            </a>
+        </div>
     </div>
-    <div class="dashboard-items">
-        <a (click)="hrefChange('/')" class="itemCardCnt">
-            <div class="itemIconCnt">
-                <img src="https://www.politecnicojic.edu.co/images/logo/logo.png" class="itemCardIcon" alt="">
-            </div>
-            <h2 class="cardLabel">Lorem, ipsum.</h2>
-            <h4 class="cardDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, ullam!</h4>
-        </a>
-    </div>
+
 </div>

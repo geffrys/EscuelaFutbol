@@ -22,7 +22,7 @@ passport.use("auth-google",new GoogleStrategy({
       await createUser(user);
       console.log('usuario creado.');
     }
-    // console.log(token);
+    
     return done(null, profile);
   }
 ));

@@ -3,42 +3,38 @@ nav{
     width: 100%;
 }
 
-.navbar-menu_itemsCnt{
+.navbar-menu_iconCnt{
     display: flex;
-    padding: 20px;
+    flex-direction: row;
     justify-content: space-between;
+
+}
+
+.navbar-menu_itemsCnt{
+    width: 100%;
+    
     background-color: white;
 }
 
-.navbar-menu_iconCnt 
+ 
 .navbar-menu_iconImg{
     width: 300px;
     padding: 10px;
-    object-fit: cover;
 }
 
-.navbar-menu_listCnt{
-    width: 70%;
-    margin: 0px 0px 10px 10px;
-}
 
-/*LIST ITEMS*/
-.navbar-menu_list{
+.navbar-menu_UserInfo{
     display: flex;
-    justify-content: space-around;
+    align-items: center;
+    padding-right: 100px;
 }
-.navbar-menu_LinkListItem{
-    text-decoration: none;
-}
-.navbar-menu_Listitem{
-    list-style: none;
-    color: #2a4723;
-}
-.navbar-menu_Listitem:hover{
-    cursor: pointer;
+
+.navbar-menu_logOut{
+    background-color: white;
+    color: black;
+    padding: 15px;
 }
 
 .navbar-menu_logOut:hover{
     cursor: pointer;
-
 }

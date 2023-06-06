@@ -19,13 +19,37 @@ const getCanchas = async (req,res) =>{
 }
 
 
-const postCancha = async (req, res) => {
+const updateCancha = async (req, res) => {
+    const {id, nombre, horario, foto, tipocancha, direccion} = req.body
     let response
     try {
         response = await query(
-            `INSERT INTO canchas()`
+            `UPDATE canchas
+            SET nombre = '${nombre}',
+                horario = '${horario}',
+                foto = '${foto}',
+                tipo_cancha = '${tipocancha}',
+                direccion = '${direccion}'
+            WHERE id = ${id};`
         )
     } catch (error) {
-        
+        response = error
     }
+    res.json(response)
 }
+
+const postCancha = async (req, res) => {
+    const {nombre, horario, foto, tipocancha, direccion} = req.body
+    let response
+    try {
+        response = await query(
+            `INSERT INTO canchas(nombre, horario, foto, tipo_cancha, direccion) VALUES ('${nombre}','${horario}','${foto}', '${tipocancha}', '${direccion}')`
+        )
+    } catch (error) {
+        response = err
+    }
+    res.json(response)
+
+}
+
+export {getCanchas, postCancha, updateCancha}
