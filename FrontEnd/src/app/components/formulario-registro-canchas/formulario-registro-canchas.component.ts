@@ -8,7 +8,12 @@ import { Router } from '@angular/router';
 })
 export class FormularioRegistroCanchasComponent implements OnInit {
 
-  cancha: any = {}
+  cancha: any = {"tipo_cancha": ""}
+
+  private TYPOADMIN : number = 2;
+  isAdmin: boolean = false;
+
+  canchas: any = []
 
   constructor(private router: Router) { }
 
@@ -23,12 +28,30 @@ export class FormularioRegistroCanchasComponent implements OnInit {
         'Content-Type': 'application/json' // Reemplaza con el tipo de contenido adecuado
       },
       body: JSON.stringify({
-        "emil": window.localStorage.getItem('email')
+        "email": window.localStorage.getItem('email')
       }) // Reemplaza 'data' con los datos que deseas enviar en el cuerpo
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data)
+        console.log(data[0].id_usuario)
+        if(data[0].id_usuario==this.TYPOADMIN){
+          this.isAdmin= true;
+        }
+      })
+      .catch(error => {
+        // Manejo de errores
+        console.error('Error:', error);
+      });
+
+      fetch('http://localhost:3000/sedes', {
+      method: 'GET', // Reemplaza con el método HTTP deseado
+      headers: {
+        'Content-Type': 'application/json' // Reemplaza con el tipo de contenido adecuado
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        this.canchas = data
       })
       .catch(error => {
         // Manejo de errores
@@ -83,11 +106,11 @@ export class FormularioRegistroCanchasComponent implements OnInit {
         .then(data => {
           console.log(data);
           if (!data.errno) {
-            this.router.navigate(['/'])
+            window.location.href='/sedes'
+            this.cancha={}
           }
           else {
-            prompt('Usuario ya registro informacion personal')
-            this.router.navigate(['/'])
+            // this.router.navigate(['/'])
           }
         })
         .catch(error => {

@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class InformacionPersonalExtraComponent {
 
-  informacionPersonal : any = {}
+  informacionPersonal : any = {"sexo":"", "rh":"", "eps":""}
 
   constructor(protected http: HttpClient, private router: Router) { 
    

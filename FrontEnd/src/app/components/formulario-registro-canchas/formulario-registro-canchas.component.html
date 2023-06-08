@@ -1,5 +1,6 @@
 <div class="formContainer">
-  <form (submit)="submit()">
+  <!-- <form (submit)="submit()" *ngIf="this.isAdmin==true"> -->
+    <form (submit)="submit()"  >
     <div class="form-group">
       <!-- <label for="nombre">Nombre:</label> -->
       <input placeholder="Nombre" type="text" id="nombre" name="nombre" [(ngModel)]="cancha.nombre" required>
@@ -8,19 +9,23 @@
       <!-- <label for="horario">Horario:</label> -->
       <input placeholder="Horario" type="text" id="horario" name="horario" [(ngModel)]="cancha.horario" required>
     </div>
-    <div class="form-group file-upload">
+    <!-- <div class="form-group file-upload">
       <label for="foto">Foto:</label>
       <input type="file" id="foto" name="foto" accept="image/*" [(ngModel)]="cancha.foto" required>
-      <span>(Solo se permiten archivos de imagen)</span>
+      <span>(Solo se permiten archivos de imagen)</span> -->
       <!-- <img id="preview" src="#" alt="Vista previa de la foto" style="display: none;"> -->
+    <!-- </div> -->
+    <div class="form-group">
+      <input type="text" name="foto" required [(ngModel)]="cancha.foto" placeholder="url imagen">
     </div>
+
     <div class="form-group">
       <select id="tipo_cancha" name="tipo_cancha" required [(ngModel)]="cancha.tipo_cancha">
         <option value="" disabled selected>Seleccionar tipo de cancha</option>
         <option value="futbol">Fútbol</option>
-        <option value="baloncesto">Baloncesto</option>
         <option value="microfutbol">Microfutbol</option>
-        <option value="futbol de sala">Tenis</option>
+        <option value="futbol sala">Futbol Sala</option>
+        
       </select>
     </div>
     <div class="form-group">
@@ -47,4 +52,21 @@
       reader.readAsDataURL(event.target.files[0]);
     });
   </script>
+
+
+  <div>
+    <div>
+      <li *ngFor="let item of canchas">
+        <div class="imgContainer">
+          <img src="{{item.foto}}" alt="">
+        </div>
+        <div class="canchaInfoCnt">
+          <h2>{{item.nombre}} ({{item.tipo_cancha}})</h2>
+          <h3>{{item.horario}}</h3>
+          <h3>{{item.direccion}}</h3>
+        </div>
+      </li>
+    </div>
+  </div>
+
 </div>
