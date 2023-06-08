@@ -16,8 +16,8 @@
 
 /* referente a los iconos */
 .itemIconCnt img{
-    width: 350px;
-    height: 350px;
+    width: 300px;
+    height: 300px;
     object-fit: cover;
 }
 
@@ -46,6 +46,10 @@
     border-radius: 5px;
 }
 
+
+.itemCardCnt{
+    text-decoration: none;
+}
 
 
 

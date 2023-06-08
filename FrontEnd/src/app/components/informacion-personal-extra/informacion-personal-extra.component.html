@@ -5,31 +5,31 @@
         <p>Necesitamos esta informacion para completar tu perfil</p>
     </div>
 
-    <form action="">
+    <form (ngSubmit)="registrar()">
 
         <table>
             <tbody>
                 <tr class="rowFormGroupInformacionPersonal">
                     <td class="inputInformacionPersonalCnt">
-                        <input type="text" placeholder="Documento" [(ngModel)]="documento">
+                        <input name="documento" type="text" placeholder="Documento" [(ngModel)]="informacionPersonal.documento">
                     </td>
                     <td class="inputInformacionPersonalCnt">
-                        <input type="text" placeholder="Nombre" [(ngModel)]="nombre">
+                        <input type="text" name="nombre" placeholder="Nombre" [(ngModel)]="informacionPersonal.nombre">
                     </td>
                     <td class="inputInformacionPersonalCnt">
-                        <input type="text" placeholder="Apellido" [(ngModel)]="apellido">
+                        <input type="text" name="apellido" placeholder="Apellido" [(ngModel)]="informacionPersonal.apellido">
                     </td>
                 </tr>
 
                 <tr class="rowFormGroupInformacionPersonal">
                     <td class="inputInformacionPersonalCnt">
-                        <input type="text" placeholder="Celular" [(ngModel)]="celular">
+                        <input type="text" placeholder="Celular"  name="celular" [(ngModel)]="informacionPersonal.celular">
                     </td>
                     <td class="inputInformacionPersonalCnt">
-                        <input type="date" placeholder="Fecha de nacimiento" [(ngModel)]="nacimiento">
+                        <input type="date" name="naciemiento" placeholder="Fecha de nacimiento" [(ngModel)]="informacionPersonal.nacimiento">
                     </td>
                     <td class="inputInformacionPersonalCnt">
-                        <select name="" id="" [(ngModel)]="sexo">
+                        <select name="seo" id="" [(ngModel)]="informacionPersonal.sexo">
                             <option [value]="" selected disabled>Selecciona tu sexo</option>
                             <option [value]="1" >Masculino</option>
                             <option [value]="2" >Femenino</option>
@@ -39,14 +39,14 @@
 
                 <tr class="rowFormGroupInformacionPersonal">
                     <td class="inputInformacionPersonalCnt">
-                        <select name="" id="" [(ngModel)]="eps">
+                        <select name="eps" id="" [(ngModel)]="informacionPersonal.eps">
                             <option [value]="" selected disabled>Selecciona tu eps</option>
                             <option [value]="1" >SaludTotal</option>
                             <option [value]="2" >Sura</option>
                         </select>
                     </td>
                     <td class="inputInformacionPersonalCnt">
-                        <select name="" id="" [(ngModel)]="rh">
+                        <select name="rh" id="" [(ngModel)]="informacionPersonal.rh">
                             <option [value]="" selected disabled>Selecciona tu rh</option>
                             <option [value]="1" >A-</option>
                             <option [value]="2" >A+</option>
@@ -57,13 +57,14 @@
                         </select>
                     </td>
                     <td class="inputInformacionPersonalCnt">
-                        <input type="text" placeholder="Tel Contacto" [(ngModel)]="contacto">
+                        <input type="text" name="contacto" placeholder="Tel Contacto" [(ngModel)]="informacionPersonal.contacto">
                     </td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>
-                        <button (click)="registrar()">Registrar</button>
+                        
+                        <button type="submit">Registrar</button>
                     </td>
                     <td></td>
                 </tr>

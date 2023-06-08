@@ -10,74 +10,76 @@ import { Router } from '@angular/router';
 })
 export class InformacionPersonalExtraComponent {
 
-  nombre: string = '';
-  apellido: string = '';
-  documento: string = '';
-  nacimiento: string = '';
-  rh: string = '';
-  sexo: string = '';
-  celular: string = '';
-  eps: string = '';
-  contacto: string = '';
+  informacionPersonal : any = {}
 
-  constructor(protected http: HttpClient, private router: Router) { }
+  constructor(protected http: HttpClient, private router: Router) { 
+   
+  }
 
   isValid(): boolean {
     let flag = true;
-    if (this.documento == '') {
+    if (!this.informacionPersonal.documento) {
       flag = false;
     }
-    if (this.nombre == '') {
+    if (!this.informacionPersonal.nombre ) {
       flag = false;
     }
-    if (this.apellido == '') {
+    if (!this.informacionPersonal.apellido ) {
       flag = false;
     }
-    if (this.celular == '') {
+    if (!this.informacionPersonal.celular ) {
       flag = false;
     }
-    if (this.nacimiento == '') {
+    if (!this.informacionPersonal.nacimiento ) {
       flag = false;
     }
-    if (this.sexo == '') {
+    if (!this.informacionPersonal.sexo ) {
       flag = false;
     }
-    if (this.rh == '') {
+    if (!this.informacionPersonal.rh ) {
       flag = false;
     }
-    if (this.contacto == '') {
+    if (!this.informacionPersonal.contacto ) {
       flag = false;
     }
-    if (this.eps == '') {
+    if (!this.informacionPersonal.eps ) {
       flag = false;
     }
+    console.log(this.informacionPersonal.nombre, this.informacionPersonal.apellido, this.informacionPersonal.nacimiento, this.informacionPersonal.celular, this.informacionPersonal.sexo, this.informacionPersonal.rh, this.informacionPersonal.contacto, this.informacionPersonal.eps,this.informacionPersonal.documento)
     return flag;
   }
 
   registrar() {
     if (this.isValid()) {
-      fetch('', {
+      fetch('http://localhost:3000/register', {
         method: 'POST', // Reemplaza con el método HTTP deseado
         headers: {
           'Content-Type': 'application/json' // Reemplaza con el tipo de contenido adecuado
         },
         body: JSON.stringify({
             "id": window.localStorage.getItem('id'),
-            "nacimiento": this.nacimiento,
-            "genero": this.sexo,
-            "tiposangre": this.rh,
-            "contacto": this.contacto,
+            "nacimiento": this.informacionPersonal.nacimiento,
+            "genero": this.informacionPersonal.sexo,
+            "tiposangre": this.informacionPersonal.rh,
+            "contacto": this.informacionPersonal.contacto,
             "tipousuario": 1,
-            "celular": this.celular,
-            "documento": this.documento,
-            "eps": this.eps,
-            "nombre": this.nombre,
-            "apellido": this.apellido
+            "celular": this.informacionPersonal.celular,
+            "documento": this.informacionPersonal.documento,
+            "eps": this.informacionPersonal.eps,
+            "nombre": this.informacionPersonal.nombre,
+            "apellido": this.informacionPersonal.apellido
         }) // Reemplaza 'data' con los datos que deseas enviar en el cuerpo
       })
         .then(response => response.json())
         .then(data => {
-          console.log(data); 
+          console.log(data);
+          if(!data.errno){
+            this.router.navigate(['/'])
+          } 
+          else{
+            prompt('Usuario ya registro informacion personal')
+            this.router.navigate(['/'])
+          }
         })
         .catch(error => {
           // Manejo de errores

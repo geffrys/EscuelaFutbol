@@ -95,8 +95,12 @@ export class LoginComponent implements OnInit {
         })
           .then(response => response.json())
           .then(data => {
-              if(data.errno){
+            console.log(data);
+            
+              if(data.errno || data.length == 0){
                 this.router.navigate(['/informacionPersonalExtra'])
+              }else{
+                this.router.navigate(['/'])
               }
           })
           .catch(error => {

@@ -11,38 +11,38 @@ const getUsuarioByEmail = async (email) => {
       `SELECT email,google_id FROM usuarios WHERE email="${email}"`
     )
   );
-}; 
+};
 
 const createUser = async (user) => {
-  try{
+  try {
     await query(
       `INSERT INTO usuarios(nombre, email, google_id, access_token) VALUES ("${user.nombre}","${user.email}","${user.google_id}","${user.access_token}");`
     )
-  }catch(err){
+  } catch (err) {
     response = err
   }
-  
+
 }
 
-const createUserExtend = async (req,res) => {
-  const {id, nacimiento, genero, tiposangre, contacto, tipousuario, celular, documento, eps, nombre, apellido} = req.body
+const createUserExtend = async (req, res) => {
+  const { id, nacimiento, genero, tiposangre, contacto, tipousuario, celular, documento, eps, nombre, apellido } = req.body
   let response
-  try{
+  try {
     response = await query(
-    `INSERT INTO usuariosextended(id_usuario, fecha_nacimiento, id_genero, id_tiposangre, tel_contacto, id_tipousuario, nombre, apellido, eps, celular, documento) VALUES (${id},'${nacimiento}',${genero},${tiposangre},${contacto}, ${tipousuario}, '${nombre}', '${apellido}', '${eps}', '${celular}', '${documento}')`
-  );
-  }catch(err){
+      `INSERT INTO usuariosextended(id_usuario, fecha_nacimiento, id_genero, id_tiposangre, tel_contacto, id_tipousuario, nombre, apellido, eps, celular, documento) VALUES (${id},'${nacimiento}',${genero},${tiposangre},${contacto}, ${tipousuario}, '${nombre}', '${apellido}', '${eps}', '${celular}', '${documento}')`
+    );
+  } catch (err) {
     response = err
   }
   res.json(response)
 }
 
-const verifyUserExtend = async (req,res)=>{
+const verifyUserExtend = async (req, res) => {
   const { email } = req.body;
   let response
   try {
     response = await query(
-      `SELECT * FROM usuarios INNER JOIN usuariosExtend ON usuarios.id = usuariosextended.id_usuario WHERE email = "${email}";`
+      `SELECT * FROM usuarios INNER JOIN usuariosextended ON id = id_usuario WHERE email = '${email}';`
     )
   } catch (err) {
     response = err
@@ -50,7 +50,7 @@ const verifyUserExtend = async (req,res)=>{
   res.json(response)
 }
 
-const getEmailId = async (req,res) => {
+const getEmailId = async (req, res) => {
   const { email } = req.body
   let response
   try {
@@ -63,4 +63,24 @@ const getEmailId = async (req,res) => {
   res.json(response)
 }
 
-export{ getUsuarioByEmail, createUser, createUserExtend, getEmailId, verifyUserExtend};
+
+const getUserTypeByEmail = async (req, res) => {
+  const { email } = req.body
+  let response
+  try {
+    response = await query(
+      `select ue.id_usuario
+      from usuarios as u
+      inner join usuariosextended as ue
+        where u.id = ue.id_usuario 
+        and
+        u.email = "${email}";`
+    )
+  } catch (error) {
+    response = error
+  }
+  res.json(response)
+}
+
+
+export { getUsuarioByEmail, createUser, createUserExtend, getEmailId, verifyUserExtend, getUserTypeByEmail };

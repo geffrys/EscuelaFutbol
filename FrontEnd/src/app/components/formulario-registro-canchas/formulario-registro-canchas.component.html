@@ -1,24 +1,22 @@
-<body>
-  <h1>Formulario</h1>
-  <form action="procesar.php" method="post" enctype="multipart/form-data">
+<div class="formContainer">
+  <form (submit)="submit()">
     <div class="form-group">
-      <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" name="nombre" required>
+      <!-- <label for="nombre">Nombre:</label> -->
+      <input placeholder="Nombre" type="text" id="nombre" name="nombre" [(ngModel)]="cancha.nombre" required>
     </div>
     <div class="form-group">
-      <label for="horario">Horario:</label>
-      <input type="text" id="horario" name="horario" required>
+      <!-- <label for="horario">Horario:</label> -->
+      <input placeholder="Horario" type="text" id="horario" name="horario" [(ngModel)]="cancha.horario" required>
     </div>
     <div class="form-group file-upload">
       <label for="foto">Foto:</label>
-      <input type="file" id="foto" name="foto" accept="image/*" required>
+      <input type="file" id="foto" name="foto" accept="image/*" [(ngModel)]="cancha.foto" required>
       <span>(Solo se permiten archivos de imagen)</span>
-      <img id="preview" src="#" alt="Vista previa de la foto" style="display: none;">
+      <!-- <img id="preview" src="#" alt="Vista previa de la foto" style="display: none;"> -->
     </div>
     <div class="form-group">
-      <label for="tipo_cancha">Tipo de Cancha:</label>
-      <select id="tipo_cancha" name="tipo_cancha" required>
-        <option value="">Seleccionar</option>
+      <select id="tipo_cancha" name="tipo_cancha" required [(ngModel)]="cancha.tipo_cancha">
+        <option value="" disabled selected>Seleccionar tipo de cancha</option>
         <option value="futbol">Fútbol</option>
         <option value="baloncesto">Baloncesto</option>
         <option value="microfutbol">Microfutbol</option>
@@ -26,10 +24,11 @@
       </select>
     </div>
     <div class="form-group">
-      <label for="direccion">Dirección:</label>
-      <textarea id="direccion" name="direccion" required></textarea>
+      <input placeholder="Direccion" id="direccion" name="direccion" required [(ngModel)]="cancha.direccion"/>
     </div>
-    <input type="submit" value="Enviar" class="submit-button">
+    <div class="EnviarBtnCnt">
+      <input type="submit" value="Enviar" class="submit-button">
+    </div>
   </form>
 
   <script>
@@ -48,4 +47,4 @@
       reader.readAsDataURL(event.target.files[0]);
     });
   </script>
-</body>
+</div>

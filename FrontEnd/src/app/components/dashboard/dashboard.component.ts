@@ -15,9 +15,12 @@ export class DashboardComponent implements OnInit{
   constructor(private router: Router, protected loggedSerice:LoggedServiceService){}
   ngOnInit(): void {   
     console.log(window.localStorage.getItem('email'));
-     
-    if(window.localStorage.getItem('email')!=null){
+    if(this.loggedSerice.getIsLogged()==true){
       this.isLogged=true;
+    }
+    if(window.localStorage.getItem('email')){
+      this.isLogged=true;
+      console.log(this.isLogged);
     }
   }
 
